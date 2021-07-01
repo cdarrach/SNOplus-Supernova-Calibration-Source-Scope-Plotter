@@ -3,7 +3,6 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                                                      
 #  Script for analyzing and visualizing spectral data of the SNO+ supernova calibration source
-#  C. Darrach, 2016
 #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
 
