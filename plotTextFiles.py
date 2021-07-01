@@ -1,16 +1,11 @@
 
 
-# fit usage: python plotTextFiles.py fit filename/\areas.txt x1 x2 fit filename/\areas2.txt x1 x2
-
-# python plotTextFiles4.py Idlesweep5_5GSs_0offset_Nov.18_GOOD/txt_files/NDF1_areas.txt Idlesweep5_5GSs_0offset_Nov.18_GOOD/txt_files/NDF1.5_areas.txt fit Idlesweep5_5GSs_0offset_Nov.18_GOOD/txt_files/\NDF2_areas.txt 18000 22000 Idlesweep5_5GSs_0offset_Nov.18_GOOD/txt_files/\NDF2.5_areas.txt 21000 25000 Idlesweep5_5GSs_0offset_Nov.18_GOOD/txt_files/\NDF3_areas.txt 23000 27000
-
-# python plotTextFiles.py Ampsweep_5GSs_Nov18_GOOD/10000_NDF2/dataset/areas.txt Ampsweep_5GSs_Nov18_GOOD/12500_NDF2/dataset/areas.txt Ampsweep_5GSs_Nov18_GOOD/15000_NDF2/dataset/areas.txt Ampsweep_17500_2_Nov28/dataset/areas.txt AmpsweepNEW_Idle20000_NDF2_Nov27/dataset/areas.txt AmpsweepNEW_Idle17500_NDF2_Nov27/dataset/areas.txt
-
-#python plotTextFiles.py Idlesweep5_5GSs_0offset_Nov.18_GOOD/NDF1/dataset/areas.txt Idlesweep5_5GSs_0offset_Nov.18_GOOD/NDF1.5/dataset/areas.txt Idlesweep5_5GSs_0offset_Nov.18_GOOD/NDF2/dataset/areas.txt Idlesweep5_5GSs_0offset_Nov.18_GOOD/NDF2.5/dataset/areas.txt Idlesweep5_5GSs_0offset_Nov.18_GOOD/NDF3/dataset/areas.txt
-
-# python plotTextFiles.py Ampsweep_15000_2_Nov28/dataset/areas.txt Ampsweep_17500_2_Nov28/dataset/areas.txt Ampsweep_20000_3_Nov28/dataset/areas.txt
-
-# FOR PLOTTING THE SPEC NDF CURVES: python plotTextFiles.py ndfspectxtfiles/NDF05/NDF0.5_spec.txt ndfspectxtfiles/NDF1/NDF1_spec.txt ndfspectxtfiles/NDF15/NDF1.5_spec.txt ndfspectxtfiles/NDF2/NDF2_spec.txt ndfspectxtfiles/NDF25/NDF2.5_spec.txt ndfspectxtfiles/NDF3/NDF3_spec.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                                                      
+#  Script for analyzing and visualizing spectral data of the SNO+ supernova calibration source
+#  C. Darrach, 2016
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
 
 
 import matplotlib.pyplot as plt
@@ -129,7 +124,7 @@ plt.ylim(0,0.08)
 plt.legend(loc="upper right")
 plt.figure(0)
 
-# zoom plot
+# zoomed-in plot
 plt.ylabel('| Area | (V.s)')
 plt.xlabel('DAC Value')
 plt.xlim(0, 110) #0-110 FOR ZOOM
@@ -140,7 +135,6 @@ plt.ylim(-0.2e-7,0.2e-7) # zoomed in
 #plt.xlim(0, 30000)
 plt.legend(loc="upper left")
 plt.figure(1)
-
 
 plt.show()
 
