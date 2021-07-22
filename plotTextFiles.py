@@ -1,10 +1,8 @@
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#                                                                                                      
-#  Script for analyzing and visualizing spectral data of the SNO+ supernova calibration source
-#
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                                                                  
+#   Script for analyzing & visualizing spectral data of the SNO+ supernova calibration source   #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 
 import matplotlib.pyplot as plt
@@ -16,22 +14,26 @@ import ROOT
 from scipy.optimize import curve_fit
 
 def linear_func(x, m, c):
-    return m*x+copen
+    return m*x+c
 
 fileArray = []
 labelArray = []
-"""labelArray.append("NDF 1")
-labelArray.append("NDF 1.5")
-labelArray.append("NDF 2")
-labelArray.append("NDF 2.5")
-labelArray.append("NDF 3")"""
-#labelArray.append("Idle 10000")
-#labelArray.append("Idle 12500")
-labelArray.append("Idle 15000")
-labelArray.append("Idle 17500")
-labelArray.append("Idle 20000")
 
-doFit = []
+# Select neutral density filter
+labelArray.append("NDF 1")
+#labelArray.append("NDF 1.5")
+#labelArray.append("NDF 2")
+#labelArray.append("NDF 2.5")
+#labelArray.append("NDF 3")
+
+# Select Idle DAC Value setting
+labelArray.append("Idle 10000")
+#labelArray.append("Idle 12500")
+#labelArray.append("Idle 15000")
+#labelArray.append("Idle 17500")
+#labelArray.append("Idle 20000")
+
+doFit = [] 
 lowFitLimits = []
 upFitLimits = []
 
@@ -40,6 +42,7 @@ errorPlot = plt.figure(1)
 
 afterFit = False
 afterFitNum  = 999999999 
+
 for i in range(1,len(sys.argv)):
         if sys.argv[i] == "fit":
             afterFit = True
@@ -53,10 +56,12 @@ for i in range(afterFitNum,len(sys.argv),3):
         doFit.append(True)
         lowFitLimits.append(float(sys.argv[i+1]))
         upFitLimits.append(float(sys.argv[i+2]))
+
 totYVals = []
 totXVals = []
 totYErr = []
 fitCounter = 0
+
 for iteration in range(len(fileArray)):
     inputFile = open(fileArray[iteration],"r")
     print inputFile
@@ -110,20 +115,21 @@ for iteration in range(len(fileArray)):
         reduced_chi_squared = chi_squared/(len(xVals[lowIndex:upIndex])-len(fitValues))
         print "Parameters for fit to: "+str(os.path.basename(fileArray[iteration]))+"    "+str(fitValues)
         print "Number of Degrees of Freedom is: "+str(len(xVals[lowIndex:upIndex])-len(fitValues))
-        print "chi squared is: "+str(chi_squared)
-        print "Reduced chi squared is: "+str(reduced_chi_squared)
-        print "Likelihood of fit for no aging is is: "+str(ROOT.TMath.Prob(chi_squared,len(xVals[lowIndex:upIndex])-len(fitValues)))
+        print "Chi-squared is: "+str(chi_squared)
+        print "Reduced chi-squared is: "+str(reduced_chi_squared)
+        print "Likelihood of fit for no aging is: "+str(ROOT.TMath.Prob(chi_squared,len(xVals[lowIndex:upIndex])-len(fitValues)))
+
 
 plt.ylabel('SDOM / | Area |')
 plt.xlabel('DAC Value')
 plt.xlim(120, 255)
-plt.ylim(0,0.08)
 #plt.xlim(0, 255)
 #plt.xlim(0, 30000)
+plt.ylim(0,0.08)
 plt.legend(loc="upper right")
 plt.figure(0)
 
-# zoomed-in plot
+# Zoomed-In plot
 plt.ylabel('| Area | (V.s)')
 plt.xlabel('DAC Value')
 plt.xlim(0, 110) #0-110 FOR ZOOM
